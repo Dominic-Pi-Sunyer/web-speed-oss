@@ -17,8 +17,9 @@ env/
 .env/
 
 # ── Page cache (runtime data) ─────────────────────────────────────────────────
-cache/*.json
-cache/*.tmp
+# Whole directory, not just the two extensions it happens to write today —
+# cached pages are other people's content and must never land in a public repo.
+cache/
 
 # ── macOS / Windows / editors ─────────────────────────────────────────────────
 .DS_Store
@@ -35,9 +36,19 @@ Desktop.ini
 *~
 
 # ── Environment / secrets ─────────────────────────────────────────────────────
+# Catch-all, not a list. The old rules covered .env, .env.local and
+# .env.*.local — but NOT .env.production or .env.staging, which would have been
+# committed silently to a public repo.
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+
+# Keys and credentials, whatever they get named
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
 
 # ── Claude Code internals ─────────────────────────────────────────────────────
 .claude/
