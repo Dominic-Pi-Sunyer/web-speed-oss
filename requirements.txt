@@ -1,5 +1,8 @@
 httpx
 beautifulsoup4
-mcp[cli]
+# Upper bound is REQUIRED, not caution: mcp 2.0 removed mcp.server.fastmcp,
+# which server.py imports at module level. Unpinned, a fresh install resolves
+# to 2.x and the server dies on import. Known-good: 1.29.0.
+mcp[cli]>=1.0.0,<2.0.0
 lxml
 playwright
